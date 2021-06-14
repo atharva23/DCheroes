@@ -1,18 +1,52 @@
 <template>
-  <h1>Dc heroes {{ herocount }}</h1>
-  <h2>{{ fname }}{{ lname }}</h2>
-  <p>{{ randc }}</p>
-  <ul>
-    <li v-for="(hero, index) in dcheroes" :key="hero.name">
-      <p>{{ hero.name }}<button v-on:click="remove(index)">X</button></p>
-    </li>
-  </ul>
-  <form @submit.prevent="addhero">
-    <input v-model="newhero" placeholder="type your hero" />
-    <button type="submit">Add hero</button>
-    <!-- <button @click="newhero='wonder woman'">Add helero</button> -->
-  </form>
-  <small>total heroes in list {{ herocount }}</small>
+  <div class="container">
+    <div class="row align-items-center">
+      <h1>Dc heroes {{ herocount }}</h1>
+      <h2>{{ fname }}{{ lname }}</h2>
+      <p>{{ randc }}</p>
+    </div>
+    <ul>
+      <li
+        class="row justify-content-center"
+        v-for="(hero, index) in dcheroes"
+        :key="hero.name"
+      >
+        <div class="col-4">
+          <p>{{ hero.name }}</p>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-primary" v-on:click="remove(index)">X</button>
+        </div>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form @submit.prevent="addhero">
+          <div class="input-group mb-3">
+            <button
+              class="btn btn-outline-secondary"
+              type="submit"
+              id="button-addon1"
+            >
+              Add hero
+            </button>
+            <input
+              v-model="newhero"
+              type="text"
+              class="form-control"
+              placeholder=""
+              aria-label="Example text with button addon"
+              aria-describedby="button-addon1"
+            />
+          </div>
+
+          <!-- <button @click="newhero='wonder woman'">Add helero</button> -->
+        </form>
+      </div>
+    </div>
+
+    <small>total heroes in list {{ herocount }}</small>
+  </div>
 </template>
 
 <script>
